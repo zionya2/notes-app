@@ -30,6 +30,7 @@ module.exports = {
         'import/prefer-default-export': 'off',
         'react/jsx-props-no-spreading': 'off',
         'react/function-component-definition': 'off',
+        '@typescript-eslint/default-param-last': 'off',
         'react/react-in-jsx-scope': 'off',
         'react/jsx-filename-extension': [2, { 'extensions': ['.js', '.jsx', '.ts', '.tsx'] }],
     },

@@ -1,0 +1,17 @@
+$background-color: #f8f8f8;
+$border-color: #ececec;
+
+
+.appLayout {
+  height: 100vh;
+}
+
+.sider {
+  background-color: $background-color;
+  border-right: 2px solid #ececec;
+  overflow-y: auto;
+}
+.content {
+  background-color: $background-color;
+  overflow-y: auto;
+}

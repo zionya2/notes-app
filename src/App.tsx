@@ -1,16 +1,16 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import { store } from './redux/store';
 import './App.css';
 import { Routes } from './routes/Routes';
 
-const App = () => {
-  const { t } = useTranslation();
-  return (
-    <div className="App">
+const App = () => (
+  <Provider store={store}>
+    <BrowserRouter>
       <Routes />
-      {t('title')}
-    </div>
-  );
-};
+    </BrowserRouter>
+  </Provider>
+);
 
 export default App;
