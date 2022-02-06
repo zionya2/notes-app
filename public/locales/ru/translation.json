@@ -1,4 +1,25 @@
 {
-  "title": "Заголовок",
-  "search_placeholder": "Поиск"
+  "title_placeholder": "Заголовок",
+  "description_placeholder": "Описание",
+  "search_placeholder": "Поиск",
+  "month_01": "Января",
+  "month_02": "Февраля",
+  "month_03": "Марта",
+  "month_04": "Апреля",
+  "month_05": "Мая",
+  "month_06": "Июня",
+  "month_07": "Июля",
+  "month_08": "Августа",
+  "month_09": "Сентября",
+  "month_10": "Октября",
+  "month_11": "Ноября",
+  "month_12": "Декабря",
+  "icon_note_new": "Новая",
+  "icon_note_edit": "Редактировать",
+  "icon_note_del": "Удалить",
+  "default_title": "Новая заметка",
+  "default_description": "Без описания",
+  "not_active_note": "Выберите заметку",
+  "modal_title": "Удаление заметки",
+  "modal_content": "Удалить заметку?"
 }

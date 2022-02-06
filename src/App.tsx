@@ -1,16 +1,22 @@
-import React from 'react';
-import { Provider } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { store } from './redux/store';
 import './App.css';
 import { Routes } from './routes/Routes';
+import { loadingNotes } from './redux/notesReducer/actions';
 
-const App = () => (
-  <Provider store={store}>
+const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadingNotes());
+  }, [dispatch]);
+
+  return (
     <BrowserRouter>
       <Routes />
     </BrowserRouter>
-  </Provider>
-);
+  );
+};
 
 export default App;

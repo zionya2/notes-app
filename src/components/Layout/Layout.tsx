@@ -4,7 +4,7 @@ import {
 } from 'antd';
 import { Header } from '../Header/Header';
 import classes from './Layout.module.scss';
-import { SideBar } from '../SideBar/SideBar';
+import { Sidebar } from '../Sidebar/Sidebar';
 
 const { Sider, Content } = AppLayout;
 
@@ -17,7 +17,7 @@ export const Layout = () => {
       <Header />
       <AppLayout>
         <Sider className={classes.sider}>
-          <SideBar />
+          <Sidebar />
         </Sider>
         <Content className={classes.content}>
           <Outlet />

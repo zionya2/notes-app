@@ -1,6 +1,13 @@
 import { all } from 'redux-saga/effects';
-import { watchGetNotes } from './notesReducer/sagas';
+import {
+  watchAddNote, watchDeleteNote, watchGetNotes, watchUpdateNote,
+} from './notesReducer/sagas';
 
 export function* rootSaga() {
-  yield all([watchGetNotes()]);
+  yield all([
+    watchGetNotes(),
+    watchAddNote(),
+    watchUpdateNote(),
+    watchDeleteNote(),
+  ]);
 }

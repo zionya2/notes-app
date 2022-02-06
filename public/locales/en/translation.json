@@ -1,4 +1,25 @@
 {
-  "title": "Title",
-  "search_placeholder": "Search"
+  "title_placeholder": "Title",
+  "description_placeholder": "Description",
+  "search_placeholder": "Search",
+  "month_01": "January",
+  "month_02": "February",
+  "month_03": "March",
+  "month_04": "April",
+  "month_05": "May",
+  "month_06": "June",
+  "month_07": "July",
+  "month_08": "August",
+  "month_09": "September",
+  "month_10": "October",
+  "month_11": "November",
+  "month_12": "December",
+  "icon_note_new": "New",
+  "icon_note_edit": "Edit",
+  "icon_note_del": "Delete",
+  "default_title": "New note",
+  "default_description": "No additional text",
+  "not_active_note": "Choose a note",
+  "modal_title": "Delete a note",
+  "modal_content": "Delete note?"
 }

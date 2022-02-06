@@ -1,16 +1,18 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './utils/i18next';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Suspense fallback="Loading...">
+  <Suspense fallback="Loading...">
+    <Provider store={store}>
       <App />
-    </Suspense>
-  </React.StrictMode>,
+    </Provider>
+  </Suspense>,
   document.getElementById('root'),
 );
 

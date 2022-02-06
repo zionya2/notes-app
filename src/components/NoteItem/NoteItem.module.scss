@@ -1,0 +1,40 @@
+$border-bottom-color: #ececec;
+$p-color: #838383;
+$title-color: #181818;
+  
+  .wrapperItem{
+    display: flex;
+    justify-content: flex-end;
+    &:hover {
+      background-color: #ececec;
+    }
+  }
+  .active {
+      background-color: #e8e8e8;
+  }
+
+  .item {
+    width: 175px;
+    padding: 8px 5px 8px 0;
+    border-bottom: 2px solid $border-bottom-color;
+    p {
+      color: $p-color;
+      font-size: 12px;
+      margin-bottom: 0;
+      white-space: nowrap;
+      overflow: hidden; 
+      text-overflow: ellipsis;
+      font-weight: 600;
+    }
+    .title {
+      color: $title-color;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    span {
+      font-weight: 700;
+      color: $title-color;
+    }
+  }
+
+ 

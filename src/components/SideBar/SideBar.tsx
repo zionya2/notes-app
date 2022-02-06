@@ -1,24 +1,18 @@
-import { useEffect } from 'react';
+import { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loadingNotes } from '../../redux/notesReducer/actions';
-import { notesSelector } from '../../redux/notesReducer/selectors';
-import classes from './SideBar.module.scss';
+import { setActiveId } from '../../redux/notesReducer/actions';
 
-export const SideBar = () => {
-  const dispatch = useDispatch();
+import { activeIdSelector, notesSelector } from '../../redux/notesReducer/selectors';
+import { NoteItemList } from '../NoteItemList/NoteItemList';
+
+export const Sidebar = () => {
   const notes = useSelector(notesSelector);
-  useEffect(() => {
-    dispatch(loadingNotes());
+  const activeId = useSelector(activeIdSelector);
+  const dispatch = useDispatch();
+  const onClick = useCallback((id:string) => {
+    dispatch(setActiveId(id));
   }, [dispatch]);
-
-  console.log('sidebar', notes);
   return (
-    <>
-      <div>Side Bar</div>
-      <div>Side Bar</div>
-      <div>Side Bar</div>
-      <div>Side Bar</div>
-      <div>Side Bar</div>
-    </>
+    <NoteItemList activeId={activeId} notes={notes} onClick={onClick} />
   );
 };

@@ -1,5 +1,6 @@
 $background-color: #f8f8f8;
 $border-color: #ececec;
+$border-right-color: #ececec;
 
 
 .appLayout {
@@ -8,7 +9,7 @@ $border-color: #ececec;
 
 .sider {
   background-color: $background-color;
-  border-right: 2px solid #ececec;
+  border-right: 2px solid $border-right-color;
   overflow-y: auto;
 }
 .content {
