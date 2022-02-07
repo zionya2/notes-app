@@ -1,9 +1,11 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import {
   setNotes, setLoading, setLoadingError, addNote, updateNotePayload, deleteNotePayload,
+  setSearchString,
+  setActiveId,
 } from './actions';
 import {
-  AddNewNoteAction, DeleteNoteAction, NoteActionTypes, UpdateNoteAction,
+  AddNewNoteAction, DeleteNoteAction, NoteActionTypes, SearchQueryAction, UpdateNoteAction,
 } from './types';
 import { payload } from './payload';
 
@@ -23,7 +25,11 @@ function* updatePayloadNote(action:UpdateNoteAction) {
   yield put(updateNotePayload(action.payload));
 }
 function* deletePayloadNote(action:DeleteNoteAction) {
+  yield put(setActiveId({ id: null }));
   yield put(deleteNotePayload(action.payload));
+}
+function* searchNotes(action:SearchQueryAction) {
+  yield put(setSearchString(action.payload));
 }
 
 export function* watchGetNotes() {
@@ -35,7 +41,9 @@ export function* watchAddNote() {
 export function* watchUpdateNote() {
   yield takeLatest(NoteActionTypes.UPDATE_NOTE, updatePayloadNote);
 }
-
 export function* watchDeleteNote() {
   yield takeLatest(NoteActionTypes.DELETE_NOTE, deletePayloadNote);
+}
+export function* watchSearchQuery() {
+  yield takeLatest(NoteActionTypes.SEARCH_NOTES, searchNotes);
 }

@@ -2,18 +2,20 @@ import { ChangeEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import { Input } from '../components/Input/Input';
-import { NoteDate } from '../components/NoteDate/NoteDate';
-import { TextArea } from '../components/TextArea/TextArea';
-import { navConfig } from '../constants';
-import { updateNote } from '../redux/notesReducer/actions';
-import { activeNoteSelector } from '../redux/notesReducer/selectors';
-import { transformDate } from '../utils/transformDate';
+import { Input } from '../UI/Input/Input';
+import { NoteDate } from '../NoteDate/NoteDate';
+import { TextArea } from '../UI/TextArea/TextArea';
+import { navConfig } from '../../constants';
+import { updateNote } from '../../redux/notesReducer/actions';
+import { activeIdSelector, notesSelector } from '../../redux/notesReducer/selectors';
+import { transformDate } from '../../utils/transformDate';
 
 export const Edit = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const note = useSelector(activeNoteSelector);
+  const activeId = useSelector(activeIdSelector);
+  const notes = useSelector(notesSelector);
+  const note = notes.find((item) => item.id === activeId);
   const date = transformDate(note?.lastModified);
   const [title, setTitle] = useState(note?.title || '');
   const [description, setDescription] = useState(note?.description || '');

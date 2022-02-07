@@ -3,9 +3,9 @@ import { NoteActionTypes, Action, NoteState } from './types';
 const initialState:NoteState = {
   notes: [],
   isLoading: false,
-  isLoadingError: null,
-  activeNote: null,
+  isLoadingError: false,
   activeId: '',
+  searchString: '',
 };
 
 export const notesReducer = (state = initialState, action: Action) => {
@@ -36,15 +36,17 @@ export const notesReducer = (state = initialState, action: Action) => {
     case NoteActionTypes.DELETE_NOTE_PAYLOAD:
       return {
         ...state,
-        activeId: null,
-        activeNote: null,
         notes: state.notes.filter((note) => (note.id !== action.payload)),
+      };
+    case NoteActionTypes.SET_SEARCH_STRING:
+      return {
+        ...state,
+        searchString: action.payload,
       };
     case NoteActionTypes.SET_ACTIVE_ID:
       return {
         ...state,
-        activeNote: state.notes.find((note) => note.id === action.payload),
-        activeId: action.payload,
+        activeId: action.payload.id,
       };
     default:
       return state;

@@ -3,20 +3,14 @@ $p-color: #838383;
 $title-color: #181818;
   
   .wrapperItem{
-    display: flex;
-    justify-content: flex-end;
-    &:hover {
-      background-color: #ececec;
-    }
-  }
-  .active {
-      background-color: #e8e8e8;
+    margin: 5px 10px;
   }
 
   .item {
-    width: 175px;
-    padding: 8px 5px 8px 0;
-    border-bottom: 2px solid $border-bottom-color;
+    width: 400px;
+    padding: 10px;
+    border: 2px solid $border-bottom-color;
+    border-radius: 5px;
     p {
       color: $p-color;
       font-size: 12px;
@@ -35,4 +29,17 @@ $title-color: #181818;
       font-weight: 700;
       color: $title-color;
     }
+    &:hover {
+      background-color: #ececec;
+    }
   } 
+
+  @media (max-width: 640px) {
+    .wrapperItem{
+      margin: 10px;
+      width: auto;
+    }
+    .item {
+      width: 100%;
+    }
+  }

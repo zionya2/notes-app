@@ -5,8 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { navConfig } from '../../constants';
-import { addNewNote, deleteNote } from '../../redux/notesReducer/actions';
-import { activeIdSelector } from '../../redux/notesReducer/selectors';
+import {
+  addNewNote, deleteNote, SearchNotes, setActiveId,
+} from '../../redux/notesReducer/actions';
+import { activeIdSelector, searchStringSelector } from '../../redux/notesReducer/selectors';
 import { Toolbar } from '../Toolbar/Toolbar';
 import classes from './Header.module.scss';
 import { SearchBar } from '../SearchBar/SearchBar';
@@ -16,6 +18,7 @@ export const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const activeId = useSelector(activeIdSelector);
+  const searchString = useSelector(searchStringSelector);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleOk = () => {
@@ -26,8 +29,12 @@ export const Header = () => {
     setIsModalVisible(false);
   };
 
-  const onSearch = (value: string) => {
-    console.log(value);
+  const onChangeSearch = (value: string) => {
+    dispatch(SearchNotes(value));
+  };
+  const onKeyPress = () => {
+    dispatch(setActiveId({ id: null }));
+    navigate(navConfig.search.path);
   };
   const addNote = () => {
     const newNote = {
@@ -59,7 +66,11 @@ export const Header = () => {
           />
         </Col>
         <Col span={8} className={classes.search}>
-          <SearchBar />
+          <SearchBar
+            value={searchString}
+            onChange={onChangeSearch}
+            onKeyPress={onKeyPress}
+          />
         </Col>
       </Row>
     </>

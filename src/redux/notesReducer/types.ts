@@ -5,6 +5,8 @@ export enum NoteActionTypes {
   SET_NOTES = 'SET_NOTES',
   LOAD_NOTES = 'LOAD_NOTES',
   SET_LOADING_ERROR = 'SET_LOADING_ERROR',
+  SEARCH_NOTES = 'SEARCH_NOTES',
+  SET_SEARCH_STRING = 'SET_SEARCH_STRING',
   SET_ACTIVE_ID = 'SET_ACTIVE_ID',
   ADD_NOTE = 'ADD_NOTE',
   ADD_NEW_NOTE = 'ADD_NEW_NOTE',
@@ -18,7 +20,9 @@ export type LoadingNotesAction = { type: NoteActionTypes.LOAD_NOTES };
 export type SetLoadingAction = { type: NoteActionTypes.SET_LOADING, payload: boolean };
 export type SetNotesAction = { type: NoteActionTypes.SET_NOTES, payload: TNote[] };
 export type SetLoadingErrorAction = { type: NoteActionTypes.SET_LOADING_ERROR, payload: boolean };
-export type SetActiveIdAction = { type: NoteActionTypes.SET_ACTIVE_ID, payload: string };
+export type SetActiveIdAction = { type: NoteActionTypes.SET_ACTIVE_ID, payload: TActiveId };
+export type SetSearchStringAction = { type: NoteActionTypes.SET_SEARCH_STRING, payload: string };
+export type SearchQueryAction = { type: NoteActionTypes.SEARCH_NOTES, payload: string };
 export type AddNoteAction = { type: NoteActionTypes.ADD_NOTE, payload: TNote };
 export type AddNewNoteAction = { type: NoteActionTypes.ADD_NEW_NOTE, payload: TNote };
 export type UpdateNoteAction = { type: NoteActionTypes.UPDATE_NOTE, payload: TNote };
@@ -34,6 +38,8 @@ export type Action =
   | SetNotesAction
   | SetLoadingErrorAction
   | SetActiveIdAction
+  | SetSearchStringAction
+  | SearchQueryAction
   | AddNoteAction
   | AddNewNoteAction
   | UpdateNoteAction
@@ -44,7 +50,11 @@ export type Action =
 export type NoteState = {
   notes: TNote[];
   isLoading: boolean;
-  activeNote: TNote | null;
   activeId: string;
-  isLoadingError: null;
+  searchString: string;
+  isLoadingError: boolean;
+};
+
+export type TActiveId = {
+  id: string | null;
 };

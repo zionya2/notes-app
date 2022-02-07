@@ -1,6 +1,6 @@
 import { all } from 'redux-saga/effects';
 import {
-  watchAddNote, watchDeleteNote, watchGetNotes, watchUpdateNote,
+  watchAddNote, watchDeleteNote, watchGetNotes, watchSearchQuery, watchUpdateNote,
 } from './notesReducer/sagas';
 
 export function* rootSaga() {
@@ -9,5 +9,6 @@ export function* rootSaga() {
     watchAddNote(),
     watchUpdateNote(),
     watchDeleteNote(),
+    watchSearchQuery(),
   ]);
 }

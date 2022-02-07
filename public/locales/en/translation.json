@@ -21,5 +21,7 @@
   "default_description": "No additional text",
   "not_active_note": "Choose a note",
   "modal_title": "Delete a note",
-  "modal_content": "Delete note?"
+  "modal_content": "Delete note?",
+  "search_title": "Search",
+  "not_found": "Not found"
 }

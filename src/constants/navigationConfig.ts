@@ -8,4 +8,7 @@ export const navConfig = {
   note: {
     path: '/note',
   },
+  search: {
+    path: '/search',
+  },
 };

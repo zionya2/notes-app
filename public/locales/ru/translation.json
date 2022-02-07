@@ -21,5 +21,7 @@
   "default_description": "Без описания",
   "not_active_note": "Выберите заметку",
   "modal_title": "Удаление заметки",
-  "modal_content": "Удалить заметку?"
+  "modal_content": "Удалить заметку?",
+  "search_title": "Поиск",
+  "not_found": "Не найдено"
 }
