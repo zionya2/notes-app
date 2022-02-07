@@ -2,13 +2,14 @@ import { ChangeEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import { Input } from '../UI/Input/Input';
-import { NoteDate } from '../NoteDate/NoteDate';
-import { TextArea } from '../UI/TextArea/TextArea';
+import { Input } from '../../components/UI/Input/Input';
+import { NoteDate } from '../../components/NoteDate/NoteDate';
+import { TextArea } from '../../components/UI/TextArea/TextArea';
 import { navConfig } from '../../constants';
 import { updateNote } from '../../redux/notesReducer/actions';
 import { activeIdSelector, notesSelector } from '../../redux/notesReducer/selectors';
 import { transformDate } from '../../utils/transformDate';
+import classes from './Edit.module.scss';
 
 export const Edit = () => {
   const { t } = useTranslation();
@@ -43,17 +44,19 @@ export const Edit = () => {
     note ? (
       <>
         <NoteDate date={`${date.day} ${t(`month_${date.month}`)} ${date.year},${date.time}`} />
-        <Input
-          size="middle"
-          placeholder={t('title_placeholder')}
-          value={title}
-          onChange={onChangeTitle}
-        />
-        <TextArea
-          value={description}
-          placeholder={t('description_placeholder')}
-          onChange={onChangeDescription}
-        />
+        <div className={classes.wrapper}>
+          <Input
+            size="middle"
+            placeholder={t('title_placeholder')}
+            value={title}
+            onChange={onChangeTitle}
+          />
+          <TextArea
+            value={description}
+            placeholder={t('description_placeholder')}
+            onChange={onChangeDescription}
+          />
+        </div>
       </>
     )
       : <Navigate to={navConfig.base.path} />

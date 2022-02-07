@@ -5,8 +5,8 @@ import { NavLink } from 'react-router-dom';
 import { navConfig } from '../../constants';
 import { SearchNotes, setActiveId } from '../../redux/notesReducer/actions';
 import { notesSelector, searchStringSelector } from '../../redux/notesReducer/selectors';
-import { NoteSearch } from '../NoteSearch/NoteSearch';
-import { NoteTitle } from '../NoteTitle/NoteTitle';
+import { NoteSearch } from '../../components/NoteSearch/NoteSearch';
+import { NoteTitle } from '../../components/NoteTitle/NoteTitle';
 import classes from './Search.module.scss';
 
 export const Search = () => {

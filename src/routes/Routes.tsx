@@ -1,11 +1,11 @@
 import { useTranslation } from 'react-i18next';
 import { Navigate, Route, Routes as AppRoutes } from 'react-router-dom';
 import { Layout } from '../components/Layout/Layout';
-import { Note } from '../components/Note/Note';
+import { Note } from '../pages/Note/Note';
 import { NoteNotActive } from '../components/NoteNotActive/NoteNotActive';
 import { navConfig } from '../constants';
-import { Edit } from '../components/Edit/Edit';
-import { Search } from '../components/Search/Search';
+import { Edit } from '../pages/Edit/Edit';
+import { Search } from '../pages/Search/Search';
 
 export const Routes = () => {
   const { t } = useTranslation();

@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Navigate } from 'react-router-dom';
 import { activeIdSelector, notesSelector } from '../../redux/notesReducer/selectors';
-import { NoteDescription } from '../NoteDescription/NoteDescription';
-import { NoteDate } from '../NoteDate/NoteDate';
-import { NoteTitle } from '../NoteTitle/NoteTitle';
+import { NoteDescription } from '../../components/NoteDescription/NoteDescription';
+import { NoteDate } from '../../components/NoteDate/NoteDate';
+import { NoteTitle } from '../../components/NoteTitle/NoteTitle';
 import { transformDate } from '../../utils/transformDate';
 import { navConfig } from '../../constants';
 
