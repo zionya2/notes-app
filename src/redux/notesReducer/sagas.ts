@@ -1,4 +1,6 @@
-import { put, select, takeLatest } from 'redux-saga/effects';
+import {
+  call, put, select, takeLatest,
+} from 'redux-saga/effects';
 import {
   setNotes, setLoading, setLoadingError, addNote, updateNotePayload, deleteNotePayload,
   setSearchString,
@@ -9,32 +11,34 @@ import {
 } from './types';
 import { payload } from './payload';
 import { TNote } from '../../types';
+import { LocalStorage } from '../../constants';
 
 function* loadingNotesData() {
   try {
     yield put(setLoading(true));
-    const notes:TNote[] = yield JSON.parse(globalThis.localStorage.getItem('notes') ?? '[]');
+    const notes:TNote[] = yield JSON.parse(globalThis.localStorage.getItem(LocalStorage.KEY_NOTES) ?? '[]');
     yield put(setNotes(notes.length ? notes : payload));
     yield put(setLoading(false));
   } catch (error) {
     yield put(setLoadingError(true));
   }
 }
+function* setNotesLocalStorage(keyName:string) {
+  const notes:TNote[] = yield select((state) => state.notes.notes);
+  yield globalThis.localStorage.setItem(keyName, JSON.stringify(notes));
+}
 function* addPayloadNote(action:AddNewNoteAction) {
   yield put(addNote(action.payload));
-  const notes:TNote[] = yield select((state) => state.notes.notes);
-  yield globalThis.localStorage.setItem('notes', JSON.stringify(notes));
+  yield call(setNotesLocalStorage, LocalStorage.KEY_NOTES);
 }
 function* updatePayloadNote(action:UpdateNoteAction) {
   yield put(updateNotePayload(action.payload));
-  const notes:TNote[] = yield select((state) => state.notes.notes);
-  yield globalThis.localStorage.setItem('notes', JSON.stringify(notes));
+  yield call(setNotesLocalStorage, LocalStorage.KEY_NOTES);
 }
 function* deletePayloadNote(action:DeleteNoteAction) {
   yield put(setActiveId({ id: null }));
   yield put(deleteNotePayload(action.payload));
-  const notes:TNote[] = yield select((state) => state.notes.notes);
-  yield globalThis.localStorage.setItem('notes', JSON.stringify(notes));
+  yield call(setNotesLocalStorage, LocalStorage.KEY_NOTES);
 }
 function* searchNotes(action:SearchQueryAction) {
   yield put(setSearchString(action.payload));
