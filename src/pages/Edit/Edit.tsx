@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom';
 import { Input } from '../../components/UI/Input/Input';
 import { NoteDate } from '../../components/NoteDate/NoteDate';
 import { TextArea } from '../../components/UI/TextArea/TextArea';
-import { navConfig } from '../../constants';
+import { EditType, navConfig } from '../../constants';
 import { updateNote } from '../../redux/notesReducer/actions';
 import { activeIdSelector, notesSelector } from '../../redux/notesReducer/selectors';
 import { transformDate } from '../../utils/transformDate';
@@ -16,30 +16,30 @@ export const Edit = () => {
   const dispatch = useDispatch();
   const activeId = useSelector(activeIdSelector);
   const notes = useSelector(notesSelector);
+
   const note = notes.find((item) => item.id === activeId);
   const date = transformDate(note?.lastModified);
+
   const [title, setTitle] = useState(note?.title || '');
   const [description, setDescription] = useState(note?.description || '');
-  const onChangeDescription = (event:ChangeEvent<HTMLTextAreaElement>) => {
+
+  const onChange = (event:ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     const noteEdit = {
       id: note?.id || '',
       title,
-      description: event.target.value,
-      lastModified: new Date().toLocaleString(),
-    };
-    setDescription(event.target.value);
-    dispatch(updateNote(noteEdit));
-  };
-  const onChangeTitle = (event:ChangeEvent<HTMLInputElement>) => {
-    const noteEdit = {
-      id: note?.id || '',
-      title: event.target.value,
       description,
       lastModified: new Date().toLocaleString(),
     };
-    setTitle(event.target.value);
+    if (event.target.type === EditType.TEXTAREA) {
+      setDescription(event.target.value);
+      noteEdit.description = event.target.value;
+    } else {
+      setTitle(event.target.value);
+      noteEdit.title = event.target.value;
+    }
     dispatch(updateNote(noteEdit));
   };
+
   return (
     note ? (
       <>
@@ -49,12 +49,12 @@ export const Edit = () => {
             size="middle"
             placeholder={t('title_placeholder')}
             value={title}
-            onChange={onChangeTitle}
+            onChange={onChange}
           />
           <TextArea
             value={description}
             placeholder={t('description_placeholder')}
-            onChange={onChangeDescription}
+            onChange={onChange}
           />
         </div>
       </>
