@@ -17,6 +17,7 @@
   "icon_note_new": "New",
   "icon_note_edit": "Edit",
   "icon_note_del": "Delete",
+  "title": "Note",
   "default_title": "New note",
   "default_description": "No additional text",
   "not_active_note": "Choose a note",

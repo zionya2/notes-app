@@ -22,7 +22,7 @@ export const NoteItem = ({ note, onClick, activeId }:NoteItemProps) => {
   return (
     <div className={`${classes.wrapperItem} ${changeActive}`}>
       <div onClick={handlerClick} className={`${classes.item} item`} aria-hidden="true">
-        <p className={classes.title}>{note.title}</p>
+        <p className={classes.title}>{note.title || t('title')}</p>
         <p>
           <span>{`${date} `}</span>
           {note.description || t('default_description')}

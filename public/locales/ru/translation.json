@@ -17,6 +17,7 @@
   "icon_note_new": "Новая",
   "icon_note_edit": "Редактировать",
   "icon_note_del": "Удалить",
+  "title": "Заметка",
   "default_title": "Новая заметка",
   "default_description": "Без описания",
   "not_active_note": "Выберите заметку",

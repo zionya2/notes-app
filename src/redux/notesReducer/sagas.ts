@@ -1,13 +1,14 @@
 import {
   call, put, select, takeLatest,
 } from 'redux-saga/effects';
+import { v4 as uuidv4 } from 'uuid';
 import {
   setNotes, setLoading, setLoadingError, addNote, updateNotePayload, deleteNotePayload,
   setSearchString,
   setActiveId,
 } from './actions';
 import {
-  AddNewNoteAction, DeleteNoteAction, NoteActionTypes, SearchQueryAction, UpdateNoteAction,
+  DeleteNoteAction, NoteActionTypes, SearchQueryAction, UpdateNoteAction,
 } from './types';
 import { payload } from './payload';
 import { TNote } from '../../types';
@@ -27,8 +28,14 @@ function* setNotesLocalStorage(keyName:string) {
   const notes:TNote[] = yield select((state) => state.notes.notes);
   yield globalThis.localStorage.setItem(keyName, JSON.stringify(notes));
 }
-function* addPayloadNote(action:AddNewNoteAction) {
-  yield put(addNote(action.payload));
+function* addPayloadNote() {
+  const newNote = {
+    id: uuidv4(),
+    title: '',
+    description: '',
+    lastModified: new Date().toLocaleString(),
+  };
+  yield put(addNote(newNote));
   yield call(setNotesLocalStorage, LocalStorage.KEY_NOTES);
 }
 function* updatePayloadNote(action:UpdateNoteAction) {

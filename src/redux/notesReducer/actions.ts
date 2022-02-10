@@ -16,7 +16,7 @@ export const setSearchString = (payload:string) => ({
 export const SearchNotes = (payload:string) => ({
   payload, type: NoteActionTypes.SEARCH_NOTES,
 });
-export const addNewNote = (payload:TNote) => ({ payload, type: NoteActionTypes.ADD_NEW_NOTE });
+export const addNewNote = () => ({ type: NoteActionTypes.ADD_NEW_NOTE });
 export const addNote = (payload:TNote) => ({ payload, type: NoteActionTypes.ADD_NOTE });
 export const updateNote = (payload:TNote) => ({ payload, type: NoteActionTypes.UPDATE_NOTE });
 export const updateNotePayload = (payload:TNote) => ({

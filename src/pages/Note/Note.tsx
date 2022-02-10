@@ -19,7 +19,7 @@ export const Note = () => {
     id ? (
       <>
         <NoteDate date={`${date.day} ${t(`month_${date.month}`)} ${date.year},${date.time}`} />
-        <NoteTitle title={note?.title || ''} />
+        <NoteTitle title={note?.title || t('title')} />
         <NoteDescription description={note?.description || ''} />
       </>
     ) : <Navigate to={navConfig.base.path} />

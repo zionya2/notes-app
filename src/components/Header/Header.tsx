@@ -3,7 +3,6 @@ import { Modal, Row, Col } from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { v4 as uuidv4 } from 'uuid';
 import { navConfig } from '../../constants';
 import {
   addNewNote, deleteNote, SearchNotes, setActiveId,
@@ -37,13 +36,7 @@ export const Header = () => {
     navigate(navConfig.search.path);
   };
   const addNote = () => {
-    const newNote = {
-      id: uuidv4(),
-      title: t('default_title'),
-      description: '',
-      lastModified: new Date().toLocaleString(),
-    };
-    dispatch(addNewNote(newNote));
+    dispatch(addNewNote());
   };
   const editNote = () => {
     navigate(navConfig.edit.path);
