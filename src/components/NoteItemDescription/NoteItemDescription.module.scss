@@ -1,0 +1,16 @@
+$p-color: #838383;
+$span-color: #181818;
+
+.description {
+  color: $p-color;
+  font-size: 12px;
+  margin-bottom: 0;
+  white-space: nowrap;
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  font-weight: 600;
+  span {
+    font-weight: 700;
+    color: $span-color;
+  }
+}

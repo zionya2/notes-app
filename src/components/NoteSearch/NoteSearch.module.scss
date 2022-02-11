@@ -11,24 +11,6 @@ $title-color: #181818;
     padding: 10px;
     border: 2px solid $border-bottom-color;
     border-radius: 5px;
-    p {
-      color: $p-color;
-      font-size: 12px;
-      margin-bottom: 0;
-      white-space: nowrap;
-      overflow: hidden; 
-      text-overflow: ellipsis;
-      font-weight: 600;
-    }
-    .title {
-      color: $title-color;
-      font-size: 14px;
-      font-weight: 700;
-    }
-    span {
-      font-weight: 700;
-      color: $title-color;
-    }
     &:hover {
       background-color: #ececec;
     }
